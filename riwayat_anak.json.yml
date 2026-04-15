@@ -1,0 +1,29 @@
+Untuk di github menyambungkan
+
+import json
+import os
+
+# 1. Data yang akan disimpan (Sesuaikan dengan sektor yang sedang aktif)
+riwayat_data = {
+    "proyek": "Piramida Guard",
+    "sektor": "Nur 9 - Pembimbing Kas",
+    "misi": "Ngumpulake Cahaya",
+    "member_terakhir": "Bewok Juri",
+    "status": "Online",
+    "last_update": "2026-04-16"
+}
+
+# 2. Simpan ke file JSON (Alamat Lokal)
+file_name = 'riwayat_anak.json'
+with open(file_name, 'w') as f:
+    json.dump(riwayat_data, f, indent=4)
+
+print(f"[✓] {file_name} berhasil diperbarui di lokal.")
+
+# 3. Otomatis Upload ke GitHub (Tanpa API, lewat Terminal)
+print("[-] Mengunggah ke GitHub...")
+os.system(f"git add {file_name}")
+os.system('git commit -m "Update riwayat_anak: Sektor 9 Aktif"')
+os.system("git push origin main") 
+
+print("[✓] Data sudah sinkron dengan GitHub!")
